@@ -6,7 +6,7 @@
 /*   By: ltian-ha <ltian-ha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 15:40:23 by ltian-ha          #+#    #+#             */
-/*   Updated: 2023/03/03 17:59:41 by ltian-ha         ###   ########.fr       */
+/*   Updated: 2023/03/03 19:44:19 by ltian-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,5 +41,6 @@ int	main(int argc, char **argv)
 	stack_b = (t_prop **)calloc(1, sizeof(t_prop));
 	add_stack(argc, stack_a, &prop);
 	ft_index_arrange(stack_a);
+	printlist(*stack_a);
 	return (0);
 }
