@@ -6,7 +6,7 @@
 /*   By: ltian-ha <ltian-ha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 09:12:50 by ltian-ha          #+#    #+#             */
-/*   Updated: 2023/03/03 17:58:07 by ltian-ha         ###   ########.fr       */
+/*   Updated: 2023/03/05 18:12:01 by ltian-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,21 @@ void	ft_lstadd_back_ps(t_prop **lst, t_prop *new)
 		*lst = new;
 		(*lst)->link = NULL;
 	}
+}
+
+int	ft_lstsize_ps(t_prop *lst)
+{
+	int		size;
+	t_prop	*start;
+
+	size = 0;
+	start = lst;
+	while (start != NULL)
+	{
+		size++;
+		start = start->link;
+	}
+	return (size);
 }
 
 // t_prop	*ft_lstlast_ps(t_prop *head)
