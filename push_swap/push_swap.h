@@ -6,7 +6,7 @@
 /*   By: ltian-ha <ltian-ha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 15:40:54 by ltian-ha          #+#    #+#             */
-/*   Updated: 2023/03/05 18:24:48 by ltian-ha         ###   ########.fr       */
+/*   Updated: 2023/03/06 14:19:39 by ltian-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,17 +38,20 @@ t_prop	*ft_lstnew_ps(int a);
 void	printlist(t_prop *stack_a);
 void	ft_lstadd_back_ps(t_prop **lst, t_prop *new);
 int		ft_lstsize_ps(t_prop *lst);
+t_prop	*ft_lastnode_ps(t_prop **stack);
 
 /* Index Arrange */
 void	ft_index_arrange(t_prop **stack_a);
 
 /* Sort for Algorythm */
-void	ft_sort_algo(t_prop **stack_a, t_prop **stack_b, int size);
+void	ft_sort_algo(t_prop **stack_a, t_prop **stack_b, t_prop *prop, int size);
 
 /* Operations */
 void	sa(t_prop **stack_a);
+void	ra(t_prop **stack_a);
+void	rra(t_prop	**stack_a);
 
 /* Utilitise */
-int	ft_check_sort(t_prop **stack_a);
+int		ft_check_sort(t_prop **stack_a);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: ltian-ha <ltian-ha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 16:25:13 by ltian-ha          #+#    #+#             */
-/*   Updated: 2023/03/05 18:35:00 by ltian-ha         ###   ########.fr       */
+/*   Updated: 2023/03/06 14:58:52 by ltian-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,52 @@ void	ft_swap(t_prop **stack)
 	next_node->index = tmp_index;
 }
 
+void	ft_rotation(t_prop **stack)
+{
+	t_prop	*first_node;
+	t_prop	*last_node;
+
+	first_node = *stack;
+	last_node = ft_lastnode_ps(stack);
+	*stack = first_node->link; // Ori link starts at second node
+	last_node->link = first_node; // last node links to first node
+	first_node->link = NULL; // first node links to NULL
+}
+
+void	ft_rotation_rev(t_prop **stack)
+{
+	t_prop	*first_node;
+	t_prop	*last_node;
+
+	first_node = *stack;
+	last_node = ft_lastnode_ps(stack);
+	while (first_node)
+	{
+		if (first_node->link->link == NULL)
+		{
+			first_node->link = NULL;
+			break ;
+		}
+		first_node = first_node->link;
+	}
+	last_node->link = *stack; // last node links to first node
+	*stack = last_node; // Ori link starts at last node
+}
+
 void	sa(t_prop **stack_a)
 {
 	ft_swap(stack_a);
 	ft_error_mssg("sa\n");
+}
+
+void	ra(t_prop **stack_a)
+{
+	ft_rotation(stack_a);
+	ft_error_mssg("ra\n");
+}
+
+void	rra(t_prop	**stack_a)
+{
+	ft_rotation_rev(stack_a);
+	ft_error_mssg("rra\n");
 }
