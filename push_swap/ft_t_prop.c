@@ -6,7 +6,7 @@
 /*   By: ltian-ha <ltian-ha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 09:12:50 by ltian-ha          #+#    #+#             */
-/*   Updated: 2023/03/07 21:03:08 by ltian-ha         ###   ########.fr       */
+/*   Updated: 2023/03/07 22:39:45 by ltian-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ t_prop	*find_mini_node(t_prop **stack)
 	head = *stack;
 	mini_node = NULL;
 	key = 0;
-	while (head->link)
+	while (head)
 	{
 		if (!key || (mini_node->index > head->index))
 		{
