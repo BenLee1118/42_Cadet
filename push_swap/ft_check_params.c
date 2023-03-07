@@ -6,7 +6,7 @@
 /*   By: ltian-ha <ltian-ha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 15:47:09 by ltian-ha          #+#    #+#             */
-/*   Updated: 2023/03/03 16:03:17 by ltian-ha         ###   ########.fr       */
+/*   Updated: 2023/03/07 13:53:25 by ltian-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,9 +47,9 @@ void	ft_check_params(int ac, char **av, t_prop *prop)
 {
 	int			i;
 	long		hold_val;
-	// t_prop		prop;
 
 	i = 0;
+	prop->ac = ac;
 	if (ac > 2)
 	{
 		prop->as = av;

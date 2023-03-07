@@ -6,7 +6,7 @@
 /*   By: ltian-ha <ltian-ha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 16:25:13 by ltian-ha          #+#    #+#             */
-/*   Updated: 2023/03/06 14:58:52 by ltian-ha         ###   ########.fr       */
+/*   Updated: 2023/03/07 22:18:42 by ltian-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,14 +71,80 @@ void	sa(t_prop **stack_a)
 	ft_error_mssg("sa\n");
 }
 
+void	sb(t_prop **stack_b)
+{
+	ft_swap(stack_b);
+	ft_error_mssg("sb\n");
+}
+
+void	ss(t_prop **stack_a, t_prop **stack_b)
+{
+	ft_swap(stack_a);
+	ft_swap(stack_b);
+	ft_error_mssg("ss\n");
+}
+
 void	ra(t_prop **stack_a)
 {
 	ft_rotation(stack_a);
 	ft_error_mssg("ra\n");
 }
 
+void	rb(t_prop **stack_b)
+{
+	ft_rotation(stack_b);
+	ft_error_mssg("rb\n");
+}
+
+void	rr(t_prop **stack_a, t_prop **stack_b)
+{
+	ft_rotation(stack_a);
+	ft_rotation(stack_b);
+	ft_error_mssg("rr\n");
+}
+
 void	rra(t_prop	**stack_a)
 {
 	ft_rotation_rev(stack_a);
 	ft_error_mssg("rra\n");
+}
+
+void	rrb(t_prop	**stack_b)
+{
+	ft_rotation_rev(stack_b);
+	ft_error_mssg("rrb\n");
+}
+
+void	rrr(t_prop	**stack_a, t_prop	**stack_b)
+{
+	ft_rotation_rev(stack_a);
+	ft_rotation_rev(stack_b);
+	ft_error_mssg("rrr\n");
+}
+
+void	pb(t_prop	*node_a, t_prop **stack_a, t_prop	**stack_b)
+{
+	int		data;
+	t_prop	*new;
+	t_prop	*temp;
+	t_prop	*prev;
+
+	prev = NULL;
+	data = node_a->data;
+	new = ft_lstnew_ps(data);
+	ft_lstadd_back_ps(stack_b, new);
+	temp = *stack_a;
+	if (temp != NULL && temp->data == data)
+	{
+		*stack_a = temp->link;
+		free(temp);
+		return ;
+	}
+	while (temp != NULL && temp->data != data)
+	{
+		prev = temp;
+		temp = temp->link;
+	}
+	prev->link = temp->link;
+	free(temp);
 }

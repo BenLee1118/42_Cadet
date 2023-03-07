@@ -6,7 +6,7 @@
 /*   By: ltian-ha <ltian-ha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 15:21:43 by ltian-ha          #+#    #+#             */
-/*   Updated: 2023/03/03 19:44:27 by ltian-ha         ###   ########.fr       */
+/*   Updated: 2023/03/07 19:52:46 by ltian-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,8 @@ void	ft_index_arrange(t_prop **stack_a)
 {
 	int		index;
 
-	index = 0;
+	index = 1;
+	// printlist(*stack_a);
 	while (find_min(stack_a))
 	{
 		// ft_printf("\n%d\n", (find_min(stack_a))->data);

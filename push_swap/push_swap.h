@@ -6,7 +6,7 @@
 /*   By: ltian-ha <ltian-ha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 15:40:54 by ltian-ha          #+#    #+#             */
-/*   Updated: 2023/03/06 14:19:39 by ltian-ha         ###   ########.fr       */
+/*   Updated: 2023/03/07 21:39:50 by ltian-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,9 @@
 
 typedef struct s_prop
 {
-	int				data;
 	char			**as;
+	int				ac;
+	int				data;
 	struct s_prop	*link;
 	int				index;
 }				t_prop;
@@ -39,6 +40,7 @@ void	printlist(t_prop *stack_a);
 void	ft_lstadd_back_ps(t_prop **lst, t_prop *new);
 int		ft_lstsize_ps(t_prop *lst);
 t_prop	*ft_lastnode_ps(t_prop **stack);
+t_prop	*find_mini_node(t_prop **stack);
 
 /* Index Arrange */
 void	ft_index_arrange(t_prop **stack_a);
@@ -50,8 +52,11 @@ void	ft_sort_algo(t_prop **stack_a, t_prop **stack_b, t_prop *prop, int size);
 void	sa(t_prop **stack_a);
 void	ra(t_prop **stack_a);
 void	rra(t_prop	**stack_a);
+void	pb(t_prop	*node_a, t_prop **stack_a, t_prop	**stack_b);
 
 /* Utilitise */
 int		ft_check_sort(t_prop **stack_a);
+void	ft_obtain_value(t_prop	*prop, int *a, int *b, int *c);
+int		find_mini_val(t_prop **stack_a, int i);
 
 #endif

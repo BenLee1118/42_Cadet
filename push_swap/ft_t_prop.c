@@ -6,7 +6,7 @@
 /*   By: ltian-ha <ltian-ha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 09:12:50 by ltian-ha          #+#    #+#             */
-/*   Updated: 2023/03/06 14:12:46 by ltian-ha         ###   ########.fr       */
+/*   Updated: 2023/03/07 21:03:08 by ltian-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,28 @@ t_prop	*ft_lastnode_ps(t_prop **stack)
 	while (last->link != NULL)
 		last = last->link;
 	return (last);
+}
+
+t_prop	*find_mini_node(t_prop **stack)
+{
+	t_prop	*head;
+	t_prop	*mini_node;
+	int		key;
+
+	head = *stack;
+	mini_node = NULL;
+	key = 0;
+	while (head->link)
+	{
+		if (!key || (mini_node->index > head->index))
+		{
+			mini_node = head;
+			key = 1;
+		}
+		head = head->link;
+	}
+	printf(" data = %d index = %d \n", mini_node->data, mini_node->index);
+	return (mini_node);
 }
 
 // t_prop	*ft_lstlast_ps(t_prop *head)

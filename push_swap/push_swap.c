@@ -6,7 +6,7 @@
 /*   By: ltian-ha <ltian-ha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 15:40:23 by ltian-ha          #+#    #+#             */
-/*   Updated: 2023/03/06 14:20:10 by ltian-ha         ###   ########.fr       */
+/*   Updated: 2023/03/07 17:53:32 by ltian-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,6 @@ int	main(int argc, char **argv)
 	add_stack(argc, stack_a, &prop);
 	ft_index_arrange(stack_a);
 	sort_stacks(stack_a, stack_b, &prop);
-	//printlist(*stack_a);
+	// printlist(*stack_a);
 	return (0);
 }
