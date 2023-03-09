@@ -6,7 +6,7 @@
 /*   By: ltian-ha <ltian-ha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 09:12:50 by ltian-ha          #+#    #+#             */
-/*   Updated: 2023/03/07 22:39:45 by ltian-ha         ###   ########.fr       */
+/*   Updated: 2023/03/09 20:09:29 by ltian-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,12 @@ t_prop	*ft_lstnew_ps(int a)
 	new->link = NULL;
 	new->index = -1;
 	return (new);
+}
+
+void	ft_lstadd_front_ps(t_prop **lst, t_prop *new)
+{
+	new->link = *lst;
+	*lst = new;
 }
 
 void	ft_lstadd_back_ps(t_prop **lst, t_prop *new)
@@ -89,7 +95,7 @@ t_prop	*find_mini_node(t_prop **stack)
 		}
 		head = head->link;
 	}
-	printf(" data = %d index = %d \n", mini_node->data, mini_node->index);
+	// printf(" data = %d index = %d \n", mini_node->data, mini_node->index);
 	return (mini_node);
 }
 

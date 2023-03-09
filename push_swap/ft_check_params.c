@@ -6,7 +6,7 @@
 /*   By: ltian-ha <ltian-ha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 15:47:09 by ltian-ha          #+#    #+#             */
-/*   Updated: 2023/03/07 13:53:25 by ltian-ha         ###   ########.fr       */
+/*   Updated: 2023/03/09 18:21:57 by ltian-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,8 +66,8 @@ void	ft_check_params(int ac, char **av, t_prop *prop)
 			ft_error_mssg("!!! OVER BUDGET !!! \n");
 		else if (!ft_check_repeat(hold_val, prop->as, i))
 			ft_error_mssg("!!! HAVE REPETITION !!! \n");
-		else
-			ft_error_mssg("CORRECT \n");
+		// else
+		// 	ft_error_mssg("CORRECT \n");
 		i += 1;
 	}
 }

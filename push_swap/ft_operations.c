@@ -6,7 +6,7 @@
 /*   By: ltian-ha <ltian-ha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 16:25:13 by ltian-ha          #+#    #+#             */
-/*   Updated: 2023/03/07 22:18:42 by ltian-ha         ###   ########.fr       */
+/*   Updated: 2023/03/09 21:20:33 by ltian-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,14 +86,21 @@ void	ss(t_prop **stack_a, t_prop **stack_b)
 
 void	ra(t_prop **stack_a)
 {
-	ft_rotation(stack_a);
-	ft_error_mssg("ra\n");
+	if (ft_lstsize_ps(*stack_a) > 1)
+	{
+		ft_rotation(stack_a);
+		ft_error_mssg("ra\n");
+	}
 }
 
 void	rb(t_prop **stack_b)
 {
-	ft_rotation(stack_b);
-	ft_error_mssg("rb\n");
+
+	if (ft_lstsize_ps(*stack_b) > 1)
+	{
+		ft_rotation(stack_b);
+		ft_error_mssg("rb\n");
+	}
 }
 
 void	rr(t_prop **stack_a, t_prop **stack_b)
@@ -122,29 +129,69 @@ void	rrr(t_prop	**stack_a, t_prop	**stack_b)
 	ft_error_mssg("rrr\n");
 }
 
-void	pb(t_prop	*node_a, t_prop **stack_a, t_prop	**stack_b)
-{
-	int		data;
-	t_prop	*new;
-	t_prop	*temp;
-	t_prop	*prev;
+// void	pb(t_prop **stack_a, t_prop	**stack_b)
+// {
+// 	int		data;
+// 	t_prop	*new;
 
-	prev = NULL;
-	data = node_a->data;
-	new = ft_lstnew_ps(data);
-	ft_lstadd_back_ps(stack_b, new);
-	temp = *stack_a;
-	if (temp != NULL && temp->data == data)
+// 	data = (*stack_a)->data;
+// 	new = ft_lstnew_ps(data);
+// 	ft_lstadd_front_ps(stack_b, new);
+// 	*stack_a = ft_free_node(stack_a);
+// 	ft_error_mssg("pb\n");
+// }
+
+// void	pa(t_prop **stack_a, t_prop	**stack_b)
+// {
+// 	int		data;
+// 	t_prop	*new;
+
+// 	data = (*stack_b)->data;
+// 	new = ft_lstnew_ps(data);
+// 	ft_lstadd_front_ps(stack_a, new);
+// 	*stack_b = ft_free_node(stack_b);
+// 	ft_error_mssg("pa\n");
+// }
+
+int	push(t_prop **stack_to, t_prop **stack_from)
+{
+	t_prop	*tmp;
+	t_prop	*head_to;
+	t_prop	*head_from;
+
+	if (ft_lstsize_ps(*stack_from) == 0)
+		return (-1);
+	head_to = *stack_to;
+	head_from = *stack_from;
+	tmp = head_from;
+	head_from = head_from->link;
+	*stack_from = head_from;
+	if (!head_to)
 	{
-		*stack_a = temp->link;
-		free(temp);
-		return ;
+		head_to = tmp;
+		head_to->link = NULL;
+		*stack_to = head_to;
 	}
-	while (temp != NULL && temp->data != data)
+	else
 	{
-		prev = temp;
-		temp = temp->link;
+		tmp->link = head_to;
+		*stack_to = tmp;
 	}
-	prev->link = temp->link;
-	free(temp);
+	return (0);
+}
+
+int	pa(t_prop **stack_a, t_prop **stack_b)
+{
+	if (push(stack_a, stack_b) == -1)
+		return (-1);
+	ft_putendl_fd("pa", 1);
+	return (0);
+}
+
+int	pb(t_prop **stack_a, t_prop **stack_b)
+{
+	if (push(stack_b, stack_a) == -1)
+		return (-1);
+	ft_putendl_fd("pb", 1);
+	return (0);
 }
