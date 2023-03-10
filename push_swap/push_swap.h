@@ -6,7 +6,7 @@
 /*   By: ltian-ha <ltian-ha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 15:40:54 by ltian-ha          #+#    #+#             */
-/*   Updated: 2023/03/10 23:08:37 by ltian-ha         ###   ########.fr       */
+/*   Updated: 2023/03/11 01:33:27 by ltian-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@ void	rrr(t_prop	**stack_a, t_prop	**stack_b);
 /* Third Operations */
 int		ft_rotation(t_prop **stack);
 int		ft_rotation_rev(t_prop **stack);
+int		ft_push(t_prop **dest, t_prop **src);
 void	pa(t_prop **stack_a, t_prop **stack_b);
 void	pb(t_prop **stack_a, t_prop **stack_b);
 // void	pb(t_prop **stack_a, t_prop	**stack_b);
@@ -87,4 +88,16 @@ t_prop	*ft_free_node(t_prop **stack);
 void	ft_free_stack(t_prop **stack);
 void	ft_free_str(char **str);
 
+/* Bonus */
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 10
+# endif
+
+int		ft_strcmp(const char *s1, const char *s2);
+char	*get_next_line(int fd);
+void	ft_bzeroo(void *str, int n);
+void	*ft_callocc(size_t count, size_t size);
+int		ft_strlenn(const char *str);
+char	*ft_strchrr(const char *s, int c);
+char	*ft_strjoinn(char const *s1, char const *s2);
 #endif
