@@ -6,7 +6,7 @@
 /*   By: ltian-ha <ltian-ha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 15:21:43 by ltian-ha          #+#    #+#             */
-/*   Updated: 2023/03/10 19:36:21 by ltian-ha         ###   ########.fr       */
+/*   Updated: 2023/03/10 23:12:35 by ltian-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,30 +34,11 @@ t_prop	*find_min(t_prop **stack_a)
 	return (min_node);
 }
 
-// void	ft_index_arrange(t_prop **stack_a)
-// {
-// 	t_prop	*head;
-// 	int		index;
-
-// 	index = 0;
-// 	head = find_min(stack_a);
-// 	while (head)
-// 	{
-// 		head->index = index++;
-// 		ft_printf("\n%d\n", head->data);
-// 		head = find_min(stack_a);
-// 	}
-// }
-
 void	ft_index_arrange(t_prop **stack_a)
 {
 	int		index;
 
 	index = 1;
-	// printlist(*stack_a);
 	while (find_min(stack_a))
-	{
-		// ft_printf("\n%d\n", (find_min(stack_a))->data);
 		(find_min(stack_a))->index = index++;
-	}
 }

@@ -6,19 +6,21 @@
 /*   By: ltian-ha <ltian-ha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 16:25:13 by ltian-ha          #+#    #+#             */
-/*   Updated: 2023/03/10 19:56:42 by ltian-ha         ###   ########.fr       */
+/*   Updated: 2023/03/10 23:25:07 by ltian-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_swap(t_prop **stack)
+int	ft_swap(t_prop **stack)
 {
 	int		tmp_data;
 	int		tmp_index;
 	t_prop	*node;
 	t_prop	*next_node;
 
+	if (ft_lstsize_ps(*stack) < 2)
+		return (FAILURE);
 	tmp_data = 0;
 	tmp_index = 0;
 	node = *stack;
@@ -31,102 +33,34 @@ void	ft_swap(t_prop **stack)
 	node->index = next_node->index;
 	next_node->data = tmp_data;
 	next_node->index = tmp_index;
-}
-
-void	ft_rotation(t_prop **stack)
-{
-	t_prop	*first_node;
-	t_prop	*last_node;
-
-	first_node = *stack;
-	last_node = ft_lastnode_ps(first_node);
-	*stack = first_node->link; // Ori link starts at second node
-	last_node->link = first_node; // last node links to first node
-	first_node->link = NULL; // first node links to NULL
-}
-
-void	ft_rotation_rev(t_prop **stack)
-{
-	t_prop	*first_node;
-	t_prop	*last_node;
-
-	first_node = *stack;
-	last_node = ft_lastnode_ps(first_node);
-	while (first_node)
-	{
-		if (first_node->link->link == NULL)
-		{
-			first_node->link = NULL;
-			break ;
-		}
-		first_node = first_node->link;
-	}
-	last_node->link = *stack; // last node links to first node
-	*stack = last_node; // Ori link starts at last node
+	return (SUCCESS);
 }
 
 void	sa(t_prop **stack_a)
 {
-	ft_swap(stack_a);
-	ft_mssg("sa\n");
+	if (!(ft_swap(stack_a)))
+		ft_mssg("sa\n");
 }
 
 void	sb(t_prop **stack_b)
 {
-	ft_swap(stack_b);
-	ft_mssg("sb\n");
+	if (!(ft_swap(stack_b)))
+		ft_mssg("sb\n");
 }
 
 void	ss(t_prop **stack_a, t_prop **stack_b)
 {
-	ft_swap(stack_a);
-	ft_swap(stack_b);
-	ft_mssg("ss\n");
+	if (!(ft_swap(stack_a)) && !(ft_swap(stack_b)))
+		ft_mssg("ss\n");
 }
 
 void	ra(t_prop **stack_a)
 {
 	if (ft_lstsize_ps(*stack_a) > 1)
 	{
-		ft_rotation(stack_a);
-		ft_mssg("ra\n");
+		if (!ft_rotation(stack_a))
+			ft_mssg("ra\n");
 	}
-}
-
-void	rb(t_prop **stack_b)
-{
-
-	if (ft_lstsize_ps(*stack_b) > 1)
-	{
-		ft_rotation(stack_b);
-		ft_mssg("rb\n");
-	}
-}
-
-void	rr(t_prop **stack_a, t_prop **stack_b)
-{
-	ft_rotation(stack_a);
-	ft_rotation(stack_b);
-	ft_mssg("rr\n");
-}
-
-void	rra(t_prop	**stack_a)
-{
-	ft_rotation_rev(stack_a);
-	ft_mssg("rra\n");
-}
-
-void	rrb(t_prop	**stack_b)
-{
-	ft_rotation_rev(stack_b);
-	ft_mssg("rrb\n");
-}
-
-void	rrr(t_prop	**stack_a, t_prop	**stack_b)
-{
-	ft_rotation_rev(stack_a);
-	ft_rotation_rev(stack_b);
-	ft_mssg("rrr\n");
 }
 
 // void	pb(t_prop **stack_a, t_prop	**stack_b)
@@ -179,44 +113,3 @@ void	rrr(t_prop	**stack_a, t_prop	**stack_b)
 // 	}
 // 	return (0);
 // }
-
-int	ft_push(t_prop **dest, t_prop **src)
-{
-	t_prop	*arrive;
-	t_prop	*depart;
-	t_prop	*temp;
-
-	if (ft_lstsize_ps(*src) == 0)
-		return (FAILURE);
-	arrive = *dest;
-	depart = *src;
-	temp = depart;
-	depart = depart->link;
-	*src = depart;
-	if (!arrive)
-	{
-		arrive = temp;
-		arrive->link = NULL;
-		*dest = arrive;
-	}
-	else
-	{
-		temp->link = arrive;
-		*dest = temp;
-	}
-	return (SUCCESS);
-}
-
-void	pa(t_prop **stack_a, t_prop **stack_b)
-{
-	if (ft_push(stack_a, stack_b) == -1)
-		return ;
-	ft_mssg("pa\n");
-}
-
-void	pb(t_prop **stack_a, t_prop **stack_b)
-{
-	if (ft_push(stack_b, stack_a) == -1)
-		return ;
-	ft_mssg("pb\n");
-}

@@ -6,7 +6,7 @@
 /*   By: ltian-ha <ltian-ha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 18:12:24 by ltian-ha          #+#    #+#             */
-/*   Updated: 2023/03/10 19:05:40 by ltian-ha         ###   ########.fr       */
+/*   Updated: 2023/03/10 23:13:09 by ltian-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,23 +62,6 @@ int	find_maxi_val(t_prop **stack_a, int i)
 	return (max);
 }
 
-t_prop	*ft_free_node(t_prop **stack)
-{
-	t_prop	*temp;
-
-	if (!(*stack)->link)
-	{
-		free(*stack);
-		*stack = NULL;
-	}
-	else
-	{
-		temp = *stack;
-		*stack = (*stack)->link;
-	}
-	return (*stack);
-}
-
 void	ft_free_stack(t_prop **stack)
 {
 	t_prop	*node;
@@ -94,7 +77,7 @@ void	ft_free_stack(t_prop **stack)
 	free(stack);
 }
 
-void ft_free_str(char **str)
+void	ft_free_str(char **str)
 {
 	int	i;
 
@@ -104,3 +87,20 @@ void ft_free_str(char **str)
 	while (i >= 0)
 		free(str[i--]);
 }
+
+// t_prop	*ft_free_node(t_prop **stack)
+// {
+// 	t_prop	*temp;
+
+// 	if (!(*stack)->link)
+// 	{
+// 		free(*stack);
+// 		*stack = NULL;
+// 	}
+// 	else
+// 	{
+// 		temp = *stack;
+// 		*stack = (*stack)->link;
+// 	}
+// 	return (*stack);
+// }

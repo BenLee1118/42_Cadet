@@ -6,7 +6,7 @@
 /*   By: ltian-ha <ltian-ha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 15:47:09 by ltian-ha          #+#    #+#             */
-/*   Updated: 2023/03/10 19:57:37 by ltian-ha         ###   ########.fr       */
+/*   Updated: 2023/03/10 22:48:11 by ltian-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,8 +72,6 @@ void	ft_check_params(int ac, char **av, t_prop *prop)
 			ft_error_mssg("Error");
 		else if (!ft_check_repeat(hold_val, prop->as, i))
 			ft_error_mssg("Error");
-		// else
-		// 	ft_mssg("CORRECT \n");
 		i ++;
 	}
 }
