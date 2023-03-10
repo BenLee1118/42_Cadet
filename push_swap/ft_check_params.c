@@ -6,15 +6,21 @@
 /*   By: ltian-ha <ltian-ha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 15:47:09 by ltian-ha          #+#    #+#             */
-/*   Updated: 2023/03/09 18:21:57 by ltian-ha         ###   ########.fr       */
+/*   Updated: 2023/03/10 19:57:37 by ltian-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+void	ft_mssg(char *str)
+{
+	ft_putstr_fd(str, 1);
+}
+
 void	ft_error_mssg(char *str)
 {
-	ft_putstr(str);
+	ft_putendl_fd(str, 1);
+	exit(0);
 }
 
 int	ft_check_value(char *nums)
@@ -61,13 +67,13 @@ void	ft_check_params(int ac, char **av, t_prop *prop)
 	{
 		hold_val = ft_atoilong(prop->as[i]);
 		if (!ft_check_value(prop->as[i]))
-			ft_error_mssg("!!! NOT A NUMBER !!! \n");
+			ft_error_mssg("Error");
 		else if (hold_val > 2147483647 || hold_val < -2147483648)
-			ft_error_mssg("!!! OVER BUDGET !!! \n");
+			ft_error_mssg("Error");
 		else if (!ft_check_repeat(hold_val, prop->as, i))
-			ft_error_mssg("!!! HAVE REPETITION !!! \n");
+			ft_error_mssg("Error");
 		// else
-		// 	ft_error_mssg("CORRECT \n");
-		i += 1;
+		// 	ft_mssg("CORRECT \n");
+		i ++;
 	}
 }

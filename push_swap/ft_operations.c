@@ -6,7 +6,7 @@
 /*   By: ltian-ha <ltian-ha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 16:25:13 by ltian-ha          #+#    #+#             */
-/*   Updated: 2023/03/09 21:20:33 by ltian-ha         ###   ########.fr       */
+/*   Updated: 2023/03/10 19:56:42 by ltian-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	ft_rotation(t_prop **stack)
 	t_prop	*last_node;
 
 	first_node = *stack;
-	last_node = ft_lastnode_ps(stack);
+	last_node = ft_lastnode_ps(first_node);
 	*stack = first_node->link; // Ori link starts at second node
 	last_node->link = first_node; // last node links to first node
 	first_node->link = NULL; // first node links to NULL
@@ -51,7 +51,7 @@ void	ft_rotation_rev(t_prop **stack)
 	t_prop	*last_node;
 
 	first_node = *stack;
-	last_node = ft_lastnode_ps(stack);
+	last_node = ft_lastnode_ps(first_node);
 	while (first_node)
 	{
 		if (first_node->link->link == NULL)
@@ -68,20 +68,20 @@ void	ft_rotation_rev(t_prop **stack)
 void	sa(t_prop **stack_a)
 {
 	ft_swap(stack_a);
-	ft_error_mssg("sa\n");
+	ft_mssg("sa\n");
 }
 
 void	sb(t_prop **stack_b)
 {
 	ft_swap(stack_b);
-	ft_error_mssg("sb\n");
+	ft_mssg("sb\n");
 }
 
 void	ss(t_prop **stack_a, t_prop **stack_b)
 {
 	ft_swap(stack_a);
 	ft_swap(stack_b);
-	ft_error_mssg("ss\n");
+	ft_mssg("ss\n");
 }
 
 void	ra(t_prop **stack_a)
@@ -89,7 +89,7 @@ void	ra(t_prop **stack_a)
 	if (ft_lstsize_ps(*stack_a) > 1)
 	{
 		ft_rotation(stack_a);
-		ft_error_mssg("ra\n");
+		ft_mssg("ra\n");
 	}
 }
 
@@ -99,7 +99,7 @@ void	rb(t_prop **stack_b)
 	if (ft_lstsize_ps(*stack_b) > 1)
 	{
 		ft_rotation(stack_b);
-		ft_error_mssg("rb\n");
+		ft_mssg("rb\n");
 	}
 }
 
@@ -107,26 +107,26 @@ void	rr(t_prop **stack_a, t_prop **stack_b)
 {
 	ft_rotation(stack_a);
 	ft_rotation(stack_b);
-	ft_error_mssg("rr\n");
+	ft_mssg("rr\n");
 }
 
 void	rra(t_prop	**stack_a)
 {
 	ft_rotation_rev(stack_a);
-	ft_error_mssg("rra\n");
+	ft_mssg("rra\n");
 }
 
 void	rrb(t_prop	**stack_b)
 {
 	ft_rotation_rev(stack_b);
-	ft_error_mssg("rrb\n");
+	ft_mssg("rrb\n");
 }
 
 void	rrr(t_prop	**stack_a, t_prop	**stack_b)
 {
 	ft_rotation_rev(stack_a);
 	ft_rotation_rev(stack_b);
-	ft_error_mssg("rrr\n");
+	ft_mssg("rrr\n");
 }
 
 // void	pb(t_prop **stack_a, t_prop	**stack_b)
@@ -153,45 +153,70 @@ void	rrr(t_prop	**stack_a, t_prop	**stack_b)
 // 	ft_error_mssg("pa\n");
 // }
 
-int	push(t_prop **stack_to, t_prop **stack_from)
-{
-	t_prop	*tmp;
-	t_prop	*head_to;
-	t_prop	*head_from;
+// int	ft_push(t_prop **stack_to, t_prop **stack_from)
+// {
+// 	t_prop	*tmp;
+// 	t_prop	*head_to;
+// 	t_prop	*head_from;
 
-	if (ft_lstsize_ps(*stack_from) == 0)
-		return (-1);
-	head_to = *stack_to;
-	head_from = *stack_from;
-	tmp = head_from;
-	head_from = head_from->link;
-	*stack_from = head_from;
-	if (!head_to)
+// 	if (ft_lstsize_ps(*stack_from) == 0)
+// 		return (-1);
+// 	head_to = *stack_to;
+// 	head_from = *stack_from;
+// 	tmp = head_from;
+// 	head_from = head_from->link;
+// 	*stack_from = head_from;
+// 	if (!head_to)
+// 	{
+// 		head_to = tmp;
+// 		head_to->link = NULL;
+// 		*stack_to = head_to;
+// 	}
+// 	else
+// 	{
+// 		tmp->link = head_to;
+// 		*stack_to = tmp;
+// 	}
+// 	return (0);
+// }
+
+int	ft_push(t_prop **dest, t_prop **src)
+{
+	t_prop	*arrive;
+	t_prop	*depart;
+	t_prop	*temp;
+
+	if (ft_lstsize_ps(*src) == 0)
+		return (FAILURE);
+	arrive = *dest;
+	depart = *src;
+	temp = depart;
+	depart = depart->link;
+	*src = depart;
+	if (!arrive)
 	{
-		head_to = tmp;
-		head_to->link = NULL;
-		*stack_to = head_to;
+		arrive = temp;
+		arrive->link = NULL;
+		*dest = arrive;
 	}
 	else
 	{
-		tmp->link = head_to;
-		*stack_to = tmp;
+		temp->link = arrive;
+		*dest = temp;
 	}
-	return (0);
+	return (SUCCESS);
 }
 
-int	pa(t_prop **stack_a, t_prop **stack_b)
+void	pa(t_prop **stack_a, t_prop **stack_b)
 {
-	if (push(stack_a, stack_b) == -1)
-		return (-1);
-	ft_putendl_fd("pa", 1);
-	return (0);
+	if (ft_push(stack_a, stack_b) == -1)
+		return ;
+	ft_mssg("pa\n");
 }
 
-int	pb(t_prop **stack_a, t_prop **stack_b)
+void	pb(t_prop **stack_a, t_prop **stack_b)
 {
-	if (push(stack_b, stack_a) == -1)
-		return (-1);
-	ft_putendl_fd("pb", 1);
-	return (0);
+	if (ft_push(stack_b, stack_a) == -1)
+		return ;
+	ft_mssg("pb\n");
 }

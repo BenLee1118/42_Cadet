@@ -6,7 +6,7 @@
 /*   By: ltian-ha <ltian-ha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 18:12:24 by ltian-ha          #+#    #+#             */
-/*   Updated: 2023/03/09 20:38:58 by ltian-ha         ###   ########.fr       */
+/*   Updated: 2023/03/10 19:05:40 by ltian-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,4 +77,30 @@ t_prop	*ft_free_node(t_prop **stack)
 		*stack = (*stack)->link;
 	}
 	return (*stack);
+}
+
+void	ft_free_stack(t_prop **stack)
+{
+	t_prop	*node;
+	t_prop	*temp;
+
+	node = *stack;
+	while (node)
+	{
+		temp = node;
+		node = node->link;
+		free(temp);
+	}
+	free(stack);
+}
+
+void ft_free_str(char **str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+		i++;
+	while (i >= 0)
+		free(str[i--]);
 }
