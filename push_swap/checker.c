@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   checker.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ltian-ha <ltian-ha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ltian-ha <ltian-ha@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 23:39:37 by ltian-ha          #+#    #+#             */
-/*   Updated: 2023/03/11 01:43:13 by ltian-ha         ###   ########.fr       */
+/*   Updated: 2023/03/11 18:03:38 by ltian-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,29 +89,25 @@ void	ft_looping(t_prop **stack_a, t_prop **stack_b, int size)
 	char	*str;
 
 	str = NULL;
-	// str = get_next_line(1);
+	(void) size;
 	while (1)
 	{
 		str = get_next_line(0);
-		if (ft_check_sort(stack_a))
+		if (!str)
+			break ;
+		if (str[ft_strlen(str) - 1] == '\n')
+			str[ft_strlen(str) - 1] = 0;
+		if (ft_actions(str, stack_a, stack_b))
 		{
-			if (ft_actions(str, stack_a, stack_b))
-			{
-				ft_error_mssg("Error");
-				break ;
-			}
-		}
-		else if (!ft_check_sort(stack_a) && *stack_b == NULL)
-		{
-			ft_putendl_fd("OK", 1);
+			ft_error_mssg("Error");
 			break ;
 		}
-		else if (*stack_a == NULL || ft_lstsize_ps(*stack_b) == size)
-		{
-			ft_putendl_fd("KO", 1);
-			break ;
-		}
+		free(str);
 	}
+	if (!ft_check_sort(stack_a) && *stack_b == NULL)
+		ft_putendl_fd("OK", 1);
+	else
+		ft_putendl_fd("KO", 1);
 }
 
 int	main(int argc, char **argv)

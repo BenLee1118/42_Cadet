@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ltian-ha <ltian-ha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ltian-ha <ltian-ha@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 15:40:54 by ltian-ha          #+#    #+#             */
-/*   Updated: 2023/03/11 01:33:27 by ltian-ha         ###   ########.fr       */
+/*   Updated: 2023/03/11 16:51:55 by ltian-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define PUSH_SWAP_H
 
 # include <stdio.h>
+# include <stdint.h>
 
 # include "./libft/libft.h"
 # include "./ft_printf/ft_printf.h"
