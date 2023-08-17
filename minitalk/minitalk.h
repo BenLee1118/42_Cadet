@@ -1,28 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   client.c                                           :+:      :+:    :+:   */
+/*   minitalk.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ltian-ha <ltian-ha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/10 22:02:54 by ltian-ha          #+#    #+#             */
-/*   Updated: 2023/08/17 20:59:36 by ltian-ha         ###   ########.fr       */
+/*   Created: 2023/08/17 20:10:55 by ltian-ha          #+#    #+#             */
+/*   Updated: 2023/08/17 20:40:06 by ltian-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minitalk.h"
+#ifndef MINITALK_H
+# define MINITALK_H
 
-int	main(int ac, char **av)
-{
-	int pid;
-	int	i;
+# include <stdio.h>
+# include <unistd.h>
+# include <signal.h>
+# include "libft/libft.h"
 
-	i = -1;
-	if (ac != 3)
-		return (1);
-	pid = ft_atoi(av[1]);
-	while (av[2][++i])
-	{
-		
-	}
-}
+#endif
