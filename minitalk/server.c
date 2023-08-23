@@ -6,7 +6,7 @@
 /*   By: ltian-ha <ltian-ha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 22:02:22 by ltian-ha          #+#    #+#             */
-/*   Updated: 2023/08/22 21:44:50 by ltian-ha         ###   ########.fr       */
+/*   Updated: 2023/08/23 21:37:13 by ltian-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,16 +44,10 @@ static void	ft_receivedlength(int *bit_count, int signal, char *str)
 void	ft_receivedata(int signal)
 {
 	static int		bit_count = 0;
-	char	*str;
+	char			*str;
 
 	str = 0;
 	ft_receivedlength(&bit_count, signal, str);
-	// if (signal == SIGUSR1)
-	// 	printf("0");
-	// else if (signal == SIGUSR2)
-	// 	printf("1");
-	// else
-	// 	printf("\n");
 }
 
 int	main(void)
