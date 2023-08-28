@@ -6,7 +6,7 @@
 /*   By: ltian-ha <ltian-ha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 22:02:54 by ltian-ha          #+#    #+#             */
-/*   Updated: 2023/08/25 22:40:51 by ltian-ha         ###   ########.fr       */
+/*   Updated: 2023/08/28 21:36:00 by ltian-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,4 +63,5 @@ int	main(int ac, char **av)
 	j = -1;
 	while (str[++j])
 		ft_send_str(pid, str[j]);
+	ft_send_str(pid, str[j]);
 }

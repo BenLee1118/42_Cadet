@@ -6,7 +6,7 @@
 /*   By: ltian-ha <ltian-ha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 22:02:22 by ltian-ha          #+#    #+#             */
-/*   Updated: 2023/08/25 23:57:00 by ltian-ha         ###   ########.fr       */
+/*   Updated: 2023/08/28 21:37:08 by ltian-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,14 +32,26 @@ static void	ft_receivedlength(int *bit_count, int signal, char **str, int *recei
 	}
 	if (*bit_count == 31)
 	{
-		printf("%d \n", strlen);
+		// printf("%d \n", strlen);
 		*receive = 1;
-		str = calloc(strlen + 1, sizeof(char));
+		*str = ft_calloc(strlen + 1, sizeof(char));
 		*bit_count = 0;
 		strlen = 0;
 		return ;
 	}
 	(*bit_count)++;
+}
+
+void	ft_restart_var(char **str, int *receive, int *i)
+{
+	if (str)
+	{
+		ft_putendl_fd(*str, 1);
+		free(*str);
+		*str = 0;
+	}
+	*i = 0;
+	*receive = 0;
 }
 
 void	ft_receivedata(int signal)
@@ -54,7 +66,6 @@ void	ft_receivedata(int signal)
 		ft_receivedlength(&bit_count, signal, &str, &receive);
 	else
 	{
-			printf("hi ");
 		if (signal == SIGUSR2)
 			char_val += ft_pwr(2, bit_count);
 		if (bit_count == 7)
@@ -62,11 +73,11 @@ void	ft_receivedata(int signal)
 			str[i++] = char_val;
 			bit_count = 0;
 			if (char_val == 0)
-				printf("%s \n", str);
+				return (ft_restart_var(&str, &receive, &i));
 			char_val = 0;
 			return ;
 		}
-		// bit_count++;
+		bit_count++;
 	}
 }
 
