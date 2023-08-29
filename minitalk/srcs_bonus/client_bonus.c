@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   client.c                                           :+:      :+:    :+:   */
+/*   client_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ltian-ha <ltian-ha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 22:02:54 by ltian-ha          #+#    #+#             */
-/*   Updated: 2023/08/28 21:36:00 by ltian-ha         ###   ########.fr       */
+/*   Updated: 2023/08/29 22:42:37 by ltian-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minitalk.h"
+#include "../includes_bonus/minitalk_bonus.h"
 
 void	ft_send_strlen(int pid, int strlen)
 {
@@ -24,6 +24,22 @@ void	ft_send_strlen(int pid, int strlen)
 		else
 			kill(pid, SIGUSR1);
 		strlen = strlen >> 1;
+		usleep(100);
+	}
+}
+
+void	ft_send_pid(int pid)
+{
+	int	i;
+
+	i = 0;
+	while (i++ < 32)
+	{
+		if (pid & 0x01)
+			kill(pid, SIGUSR2);
+		else
+			kill(pid, SIGUSR1);
+		pid = pid >> 1;
 		usleep(100);
 	}
 }
@@ -44,24 +60,39 @@ void	ft_send_str(int pid, char letter)
 	}
 }
 
+void	ft_signalback(int signal)
+{
+	char	*s;
+
+	s = "String Received";
+	if (signal == SIGUSR2)
+	{
+		ft_putendl_fd(s, 1);
+		exit(0);
+	}
+}
+
 int	main(int ac, char **av)
 {
 	int		pid;
 	int		strlen;
-	int		i;
 	int		j;
 	char	*str;
 
 	str = NULL;
-	i = -1;
 	if (ac != 3)
 		return (1);
 	pid = ft_atoi(av[1]);
 	str = av[2];
+	signal(SIGUSR2, ft_signalback);
 	strlen = ft_strlen(str);
 	ft_send_strlen(pid, strlen);
 	j = -1;
 	while (str[++j])
 		ft_send_str(pid, str[j]);
 	ft_send_str(pid, str[j]);
+	while (1)
+	{
+		usleep(100);
+	}
 }

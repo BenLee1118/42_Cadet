@@ -6,11 +6,11 @@
 /*   By: ltian-ha <ltian-ha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 22:02:22 by ltian-ha          #+#    #+#             */
-/*   Updated: 2023/08/28 21:37:08 by ltian-ha         ###   ########.fr       */
+/*   Updated: 2023/08/29 22:42:25 by ltian-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minitalk.h"
+#include "../includes/minitalk.h"
 
 int	ft_pwr(int nb, int power)
 {
@@ -22,7 +22,8 @@ int	ft_pwr(int nb, int power)
 		return (nb * ft_pwr(nb, power - 1));
 }
 
-static void	ft_receivedlength(int *bit_count, int signal, char **str, int *receive)
+static void	ft_receivedlength(int *bit_count, int signal, \
+		char **str, int *receive)
 {
 	static int	strlen = 0;
 
@@ -32,7 +33,6 @@ static void	ft_receivedlength(int *bit_count, int signal, char **str, int *recei
 	}
 	if (*bit_count == 31)
 	{
-		// printf("%d \n", strlen);
 		*receive = 1;
 		*str = ft_calloc(strlen + 1, sizeof(char));
 		*bit_count = 0;

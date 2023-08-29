@@ -30,20 +30,20 @@ BON_O	= $(BON_C:.c=.o)
 all:		$(NAME)
 
 $(NAME):	$(SRC_O) $(INCLUDE)
-			$(AR) $(NAME) $(SRC_O)
-			$(LIB2) $(NAME)
+			@$(AR) $(NAME) $(SRC_O)
+			@$(LIB2) $(NAME)
 
 bonus:		$(NAME) $(BON_O)
 			$(AR) $(NAME) $(BON_O)
 			$(LIB2) $(NAME)
 
 .c.o:
-			$(CC) $(CFLAGS) -I$(INCLUDE) -c $< -o $(<:.c=.o)
+			@$(CC) $(CFLAGS) -I$(INCLUDE) -c $< -o $(<:.c=.o)
 
 clean:
-			$(RM) $(SRC_O) $(BON_O)
+			@$(RM) $(SRC_O) $(BON_O)
 
 fclean:		clean
-			$(RM) $(NAME)
+			@$(RM) $(NAME)
 
 re:			fclean all
