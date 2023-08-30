@@ -6,7 +6,7 @@
 /*   By: ltian-ha <ltian-ha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 22:02:54 by ltian-ha          #+#    #+#             */
-/*   Updated: 2023/08/29 22:42:17 by ltian-ha         ###   ########.fr       */
+/*   Updated: 2023/08/30 21:22:34 by ltian-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,10 +53,17 @@ int	main(int ac, char **av)
 	char	*str;
 
 	str = NULL;
-	i = -1;
 	if (ac != 3)
-		return (1);
+		return (-1);
+	i = -1;
+	while (av[1][++i])
+	{
+		if (!ft_strrchr("0123456789", av[1][i]))
+			return (-1);
+	}
 	pid = ft_atoi(av[1]);
+	if (pid <= 0)
+		return (-1);
 	str = av[2];
 	strlen = ft_strlen(str);
 	ft_send_strlen(pid, strlen);

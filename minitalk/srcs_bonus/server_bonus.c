@@ -6,7 +6,7 @@
 /*   By: ltian-ha <ltian-ha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 22:02:22 by ltian-ha          #+#    #+#             */
-/*   Updated: 2023/08/29 22:42:44 by ltian-ha         ###   ########.fr       */
+/*   Updated: 2023/08/30 20:27:38 by ltian-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,7 @@ int	main(void)
 	struct sigaction	sig;
 
 	pid = getpid();
+	ft_putstr_fd("PID = ", 1);
 	ft_putnbr_fd(pid, 1);
 	ft_putchar_fd('\n', 1);
 	sig.sa_sigaction = ft_receivedata;
