@@ -3,14 +3,14 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ltian-ha <ltian-ha@student.42.fr>          +#+  +:+       +#+         #
+#    By: ltian-ha <ltian-ha@student.42kl.edu.my>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/29 22:23:12 by ltian-ha          #+#    #+#              #
-#    Updated: 2023/08/29 23:22:18 by ltian-ha         ###   ########.fr        #
+#    Updated: 2023/08/30 13:26:35 by ltian-ha         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-# ------------------------------ Colors ------------------------------
+# __________________________________Colors__________________________________
 
 BOLD_PURPLE	=	\033[1;35m
 
@@ -20,7 +20,7 @@ BOLD_YELLOW	=	\033[1;33m
 
 NO_COLOR	=	\033[0m
 
-# ------------------------------ Messages ------------------------------
+# __________________________________Messages________________________________
 
 COMP_START	=	echo "\n🚧 $(BOLD_YELLOW)Make: $(NO_COLOR)Starting the compilation...\n"
 
@@ -32,15 +32,23 @@ CLEANED		=	echo "\n💧 $(BOLD_YELLOW)Clean: $(NO_COLOR)Removed all the \".o\" f
 
 FCLEANED	=	echo "\n🧼 $(BOLD_YELLOW)Fclean: $(NO_COLOR)Removed the executables \n"
 
-# ----------------------------------------------------------------------
+# __________________________________Commands Initialization________________________________
 
-CC = gcc
-CFLAGS = -Wall -Wextra -Werror
-INCLUDE		=	-I include
-LIBFT		=	cd libft && make
-LIB = ./libft/libft.a
-RM = rm -rf
+CC 			= gcc
 
+CFLAGS 		= -Wall -Wextra -Werror
+
+INCLUDE		= -I include
+
+LIBFT		= cd libft && make
+
+LIB			= ./libft/libft.a
+
+RM 			= rm -rf
+
+# __________________________________File Names________________________________
+
+# Sources
 SERVER = server
 CLIENT = client
 
@@ -50,8 +58,7 @@ SV_OBJS = $(SV_SRCS:.c=.o)
 CLIENT_SRCS = srcs/client.c
 CLIENT_OBJS = $(CLIENT_SRCS:.c=.o)
 
-
-
+# Sources Bonus
 SERVER_BONUS = server_bonus
 CLIENT_BONUS = client_bonus
 
@@ -61,24 +68,20 @@ SV_BONUS_OBJS = $(SV_BONUS_SRCS:.c=.o)
 CLIENT_BONUS_SRCS = srcs_bonus/client_bonus.c
 CLIENT_BONUS_OBJS = $(CLIENT_BONUS_SRCS:.c=.o)
 
-all: comp_start ft_server $(CLIENT)
+# __________________________________Rules Make________________________________
 
-# $(LIBFT):
-# 	$(MAKE) -C ./libft
+all: comp_start src_server src_client
 
 comp_start:
 	@$(COMP_START)
 	@$(LIBFT)
 
-# $(SERVER): $(SV_OBJS)
-# 	@$(CC) $(CFLAGS) $(SV_OBJS) $(LIB) -o server
-# 	@$(SERV_READY)
-ft_server: $(SV_OBJS)
+src_server: $(SV_OBJS)
 	@$(CC) $(CFLAGS) $(SV_OBJS) $(LIB) -o $(SERVER)
 	@$(SERV_READY)
 
-$(CLIENT): $(CLIENT_OBJS)
-	@$(CC) $(CFLAGS) $(CLIENT_OBJS) $(LIB) -o client
+src_client: $(CLIENT_OBJS)
+	@$(CC) $(CFLAGS) $(CLIENT_OBJS) $(LIB) -o $(CLIENT)
 	@$(CLI_READY)
 	
 # $(SERVER_BONUS): $(SV_BONUS_OBJS) $(LIBFT)
