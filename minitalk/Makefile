@@ -6,7 +6,7 @@
 #    By: ltian-ha <ltian-ha@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/29 22:23:12 by ltian-ha          #+#    #+#              #
-#    Updated: 2023/08/30 20:24:34 by ltian-ha         ###   ########.fr        #
+#    Updated: 2023/09/01 21:54:31 by ltian-ha         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -99,4 +99,4 @@ fclean: clean
 
 re: fclean all
 
-bonus: srcs_server_bonus srcs_client_bonus
+bonus: comp_start srcs_server_bonus srcs_client_bonus
