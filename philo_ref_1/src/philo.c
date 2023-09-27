@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jdecorte <jdecorte@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ltian-ha <ltian-ha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 16:10:04 by jdecorte42        #+#    #+#             */
-/*   Updated: 2022/04/14 14:43:16 by jdecorte         ###   ########.fr       */
+/*   Updated: 2023/09/22 20:58:26 by ltian-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,9 +72,9 @@ void	*philo_life(void *phi)
 	while (!is_dead(philo, 0))
 	{
 		pthread_create(&t, NULL, check_death, phi);
+		pthread_detach(t);
 		take_fork(philo);
 		philo_eat(philo);
-		pthread_detach(t);
 		if (philo->m_count == philo->info->n_eat)
 		{
 			pthread_mutex_lock(&philo->info->m_stop);
