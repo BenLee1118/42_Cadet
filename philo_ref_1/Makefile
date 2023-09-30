@@ -3,16 +3,16 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jdecorte42 <jdecorte42@student.42.fr>      +#+  +:+       +#+         #
+#    By: ltian-ha <ltian-ha@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/27 17:11:47 by jdecorte          #+#    #+#              #
-#    Updated: 2022/04/12 11:07:51 by jdecorte42       ###   ########.fr        #
+#    Updated: 2023/09/30 19:14:44 by ltian-ha         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = philo
 
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -fsanitize=thread -g3
 
 RM = rm -rf
 

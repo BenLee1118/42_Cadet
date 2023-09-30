@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   monitoring.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nnuno-ca <nnuno-ca@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: ltian-ha <ltian-ha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 18:07:42 by nnuno-ca          #+#    #+#             */
-/*   Updated: 2023/01/21 01:38:30 by nnuno-ca         ###   ########.fr       */
+/*   Updated: 2023/09/30 19:17:14 by ltian-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,6 @@ void	monitoring(t_philo *philo, t_event_id event_id)
 		return ;
 	}
 	timestamp = get_time() - philo->start_time;
-	printf("%ld %d %s", timestamp, philo->philo_nbr, events[event_id]);
+	printf("%d %d %s", timestamp, philo->philo_nbr, events[event_id]);
 	pthread_mutex_unlock(&philo->args->monitoring_mutex);
 }

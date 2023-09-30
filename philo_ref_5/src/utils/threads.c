@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   threads.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tterribi <tterribi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ltian-ha <ltian-ha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 17:56:39 by tterribi          #+#    #+#             */
-/*   Updated: 2022/10/24 11:20:34 by tterribi         ###   ########.fr       */
+/*   Updated: 2023/09/30 21:16:20 by ltian-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ void	*routine(void *philo_pointer)
 	t_philo	*philo;
 
 	philo = (t_philo *) philo_pointer;
+	//t_data *data = philo.data;
 	philo->time_to_die = philo->data->death_time + get_time();
 	if (pthread_create(&philo->t1, NULL, &supervisor, (void *)philo))
 		return ((void *)1);
@@ -84,7 +85,7 @@ int	thread_init(t_data *data)
 	}
 	while (++i < data->philo_num)
 	{
-		if (pthread_create(&data->tid[i], NULL, &routine, &data->philos[i]))
+		if (pthread_create(&data->tid[i], NULL, &routine, &data->philos[i])) // philo[i]->tid
 			return (error(TH_ERR, data));
 		ft_usleep(1);
 	}

@@ -2,7 +2,7 @@ NAME = philo
 
 CC = gcc
 
-CFLAGS = -Wall -Werror -Wextra -g
+CFLAGS = -Wall -Werror -Wextra -fsanitize=thread -g3
 
 Y = "\033[33m"
 R = "\033[31m"

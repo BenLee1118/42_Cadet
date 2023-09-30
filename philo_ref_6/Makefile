@@ -2,7 +2,7 @@ NAME = philo
 
 CC = gcc
 
-FLAGS = -Wall -Wextra -Werror
+FLAGS = -Wall -Wextra -Werror -fsanitize=thread -g3
 
 SOURCES = ./sources/philosophers_actions/*.c \
 		  ./sources/philosophers_utils/*.c \

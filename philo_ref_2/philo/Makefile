@@ -4,7 +4,7 @@ RED = \033[0;31m
 RESET = \033[0m
 
 CC = cc
-CFLAGS = -Wall -Werror -Wextra
+CFLAGS = -Wall -Werror -Wextra -fsanitize=thread -g3
 
 # INCLUDE: .h files or .a library folders
 # SRC: .c files

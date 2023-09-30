@@ -3,16 +3,16 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: meskelin <meskelin@student.42.fr>          +#+  +:+       +#+         #
+#    By: ltian-ha <ltian-ha@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/04 14:38:49 by meskelin          #+#    #+#              #
-#    Updated: 2023/07/21 10:52:39 by meskelin         ###   ########.fr        #
+#    Updated: 2023/09/30 19:20:20 by ltian-ha         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = philo
 
-BUILD_FLAGS = -Wall -Wextra -Werror -o2 -g
+BUILD_FLAGS = -Wall -Wextra -Werror -fsanitize=thread -g3
 
 COMMON_SRC =	validate \
 				nbr \

@@ -3,15 +3,15 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: nnuno-ca <nnuno-ca@student.42porto.com>    +#+  +:+       +#+         #
+#    By: ltian-ha <ltian-ha@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/29 12:34:39 by nnuno-ca          #+#    #+#              #
-#    Updated: 2023/01/21 01:39:11 by nnuno-ca         ###   ########.fr        #
+#    Updated: 2023/09/30 19:18:37 by ltian-ha         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -fsanitize=thread
+CFLAGS = -Wall -Wextra -Werror -fsanitize=thread -g3
 INC = -I./includes
 VPATH = srcs srcs/input srcs/philos srcs/utils
 RM = rm -rf

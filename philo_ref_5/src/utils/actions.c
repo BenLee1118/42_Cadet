@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   actions.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tterribi <tterribi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ltian-ha <ltian-ha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 18:35:49 by tterribi          #+#    #+#             */
-/*   Updated: 2022/10/24 11:20:53 by tterribi         ###   ########.fr       */
+/*   Updated: 2023/09/30 21:42:40 by ltian-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	messages(char *str, t_philo *philo)
 
 void	take_forks(t_philo *philo)
 {
-	pthread_mutex_lock(philo->r_fork);
+	pthread_mutex_lock(philo->r_fork); // philo->data->fork[right_id] philo->r_fork = fork[right_id]
 	messages(TAKE_FORKS, philo);
 	pthread_mutex_lock(philo->l_fork);
 	messages(TAKE_FORKS, philo);
