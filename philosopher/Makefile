@@ -14,17 +14,22 @@ NAME		=	philo
 CC			=	gcc
 CFLAGS		=	-Wall -Wextra -Werror -fsanitize=thread -g3
 SOURCES		=	checkers.c initialize.c philo.c utilities.c
+LIBFT		=	cd libft && make
+LIB			=	./libft/libft.a
 RM			=	rm -rf
 
 $(NAME) :
-	$(CC) $(CFLAGS) $(SOURCES) -o $(NAME)
+	$(LIBFT)
+	$(CC) $(CFLAGS) $(SOURCES) $(LIB) -o $(NAME)
 
 all : $(NAME)
 
 fclean : clean
-	$(RM) $(NAME)
+	@$(MAKE) fclean -C ./libft
+	@$(RM) $(NAME)
 
 clean :
-	$(RM) $(NAME)
+	@$(MAKE) clean -C ./libft
+	@$(RM) $(NAME)
 
 re : fclean all
