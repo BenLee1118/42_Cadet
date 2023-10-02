@@ -3,19 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   initialize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ltian-ha <ltian-ha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ltian-ha <ltian-ha@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 18:48:50 by ltian-ha          #+#    #+#             */
-/*   Updated: 2023/09/30 21:00:53 by ltian-ha         ###   ########.fr       */
+/*   Updated: 2023/10/02 15:42:42 by ltian-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-int	ft_initialize(t_data *data, char **av)
-{
+// int	ft_initialize(t_data *data, char **av)
+// {
 	
-}
+// }
 
 
 
