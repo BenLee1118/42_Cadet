@@ -6,7 +6,7 @@
 /*   By: ltian-ha <ltian-ha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 19:43:14 by ltian-ha          #+#    #+#             */
-/*   Updated: 2023/10/02 21:19:27 by ltian-ha         ###   ########.fr       */
+/*   Updated: 2023/10/03 21:46:49 by ltian-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,18 +30,28 @@
 
 typedef struct s_philo
 {
+	int				id;
+	int				fork_left_id;
+	int				fork_right_id;
+	int				n_ate;
+	struct s_data	*data;
 }	t_philo;
 
 typedef struct s_data
 {
-	int		n_philo;
-	int		t_die;
-	int		t_eat;
-	int		t_sleep;
-	int		n_eat;
-	int		all_eaten;
-	int		dead;
-	t_philo	*philo;
+	int				n_philo;
+	int				t_die;
+	int				t_eat;
+	int				t_sleep;
+	int				n_eat;
+	int				all_eaten;
+	int				dead;
+	pthread_mutex_t	*fork;
+	pthread_mutex_t	printing;
+	pthread_mutex_t	checking;
+	pthread_mutex_t	eating;
+	pthread_mutex_t	dying;
+	t_philo			*philo;
 }	t_data;
 
 // checkers.c //
@@ -55,9 +65,9 @@ void	ft_print_message(void);
 // initialize.c //
 int		ft_init_data(t_data *data, char **av);
 int		ft_init_mutex(t_data *data);
+int		ft_init_philo(t_data *data);
 
 #endif
-
 /*
 typedef struct s_philo
 {
