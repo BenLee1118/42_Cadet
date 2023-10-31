@@ -11,7 +11,7 @@
 # **************************************************************************** #
 
 CC		= gcc
-CFLAGS	= -Wall -Wextra -Werror
+CFLAGS	= -Wall -Wextra
 AR		= ar -rcs
 LIB2	= ranlib
 RM		= rm -rf
